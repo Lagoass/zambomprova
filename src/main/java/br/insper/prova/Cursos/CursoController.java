@@ -22,7 +22,7 @@ public class CursoController {
     }
 
     @PostMapping("/{id_do_curso}")
-    public Curso adicionaAluno(@PathVariable String id_do_curso, @RequestBody String cpf_do_aluno) {
+    public Curso adicionarAluno(@PathVariable String id_do_curso, @RequestParam String cpf_do_aluno) {
         return cursoService.adicionarAluno(id_do_curso, cpf_do_aluno);
     }
 }

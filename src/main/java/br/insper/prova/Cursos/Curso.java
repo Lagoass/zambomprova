@@ -15,7 +15,7 @@ public class Curso {
     private String id;
     private String nome;
     private String descricao;
-    private Integer numero_alunos_max;
+    private Integer numero_alunos_maximo;
     private String cpf_do_professor;
-    private List<String> lista_alunos;
+    private List<String> lista_de_alunos;
 }
