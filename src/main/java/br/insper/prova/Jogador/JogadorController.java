@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/jogador")
+@RequestMapping("/Jogador")
 public class JogadorController {
     @Autowired
     private JogadorService jogadorService;
