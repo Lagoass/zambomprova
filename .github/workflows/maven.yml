@@ -57,6 +57,6 @@ jobs:
         key: ${{ secrets.KEY_TEST }}
         port: 22
         script: |
-          docker sudo stop prova
-          docker sudo rm --force prova
-          docker sudo run -d -p 8081:8081 --network=rede --name prova lagoaaa/prova:${{ github.sha }}
+          sudo docker stop prova
+          sudo docker rm --force prova
+          sudo docker run -d -p 8081:8081 --network=rede --name prova lagoaaa/prova:${{ github.sha }}
