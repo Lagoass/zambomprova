@@ -64,8 +64,8 @@ public class CursoService {
         return cursoRepository.findAll();
     }
 
-    public Curso adicionarAluno(String idCurso, String cpf_aluno) {
-        Curso curso = cursoRepository.findById(idCurso).orElseThrow(() ->
+    public Curso adicionarAluno(String id_do_curso, String cpf_do_aluno) {
+        Curso curso = cursoRepository.findById(id_do_curso).orElseThrow(() ->
                 new IllegalArgumentException("O curso não foi encontrado no sistema.")
         );
 
@@ -73,23 +73,23 @@ public class CursoService {
             throw new IllegalArgumentException("O curso já atingiu o número máximo de alunos.");
         }
 
-        if (curso.getLista_de_alunos().contains(cpf_aluno)) {
+        if (curso.getLista_de_alunos().contains(cpf_do_aluno)) {
             throw new IllegalArgumentException("O aluno já está matriculado no curso.");
         }
 
-        if (cpf_aluno == null) {
+        if (cpf_do_aluno == null) {
             throw new IllegalArgumentException("O CPF do aluno é obrigatório.");
         }
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<ReturnDTO> alunoResponse = restTemplate.getForEntity(
-                "http://184.72.80.215:8080/usuario/" + cpf_aluno, ReturnDTO.class);
+                "http://184.72.80.215:8080/usuario/" + cpf_do_aluno, ReturnDTO.class);
 
         if (!alunoResponse.getStatusCode().is2xxSuccessful()) {
             throw new IllegalArgumentException("O aluno não foi encontrado no sistema.");
         }
 
-        curso.getLista_de_alunos().add(cpf_aluno);
+        curso.getLista_de_alunos().add(cpf_do_aluno);
         cursoRepository.save(curso);
 
         return curso;
